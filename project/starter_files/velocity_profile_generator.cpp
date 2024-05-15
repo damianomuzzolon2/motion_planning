@@ -126,7 +126,7 @@ std::vector<TrajectoryPoint> VelocityProfileGenerator::decelerate_trajectory(
     // Let's now go backwards until we get to the very beginning of the path
     for (int i = stop_index - 1; i >= 0; --i) {
       auto dist = utils::distance(spiral[i + 1], spiral[i]);
-      auto vi = calc_final_speed(vf, -_a_max, dist);
+      auto vi = calc_final_speed(vf, -_a_max, dist);  // MAYBE IT'S +_a_max
       if (vi > start_speed) {
         vi = start_speed;
       }
@@ -385,7 +385,7 @@ double VelocityProfileGenerator::calc_final_speed(const double& v_i,
   // and make v_f = 0 in that case. If the discriminant is inf or nan return
   // infinity
 
-  double disc = 0;  // <- Fix this
+  double disc = v_i * v_i + 2 * a * d;  // <- Fix this
   if (disc <= 0.0) {
     v_f = 0.0;
   } else if (disc == std::numeric_limits<double>::infinity() ||
