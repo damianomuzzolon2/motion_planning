@@ -1,4 +1,8 @@
 #! /bin/bash
+cd starter_files
+rm -rf rpclib 
+git clone https://github.com/rpclib/rpclib.git
+cd ..
 sudo apt-get install libuv1-dev libssl-dev libz-dev
 git clone https://github.com/uWebSockets/uWebSockets 
 cd uWebSockets
