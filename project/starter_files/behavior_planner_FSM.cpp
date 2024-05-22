@@ -80,7 +80,7 @@ double BehaviorPlannerFSM::get_look_ahead_distance(const State& ego_state) {
 
   // hypothesis: -3m/s^2 deceleration
   const double deceleration = -3;
-  const auto look_ahead_distance =
+  auto look_ahead_distance =
       -velocity_mag * velocity_mag / deceleration +
       0.5 * velocity_mag * velocity_mag / deceleration;  // <- Fix This
 
